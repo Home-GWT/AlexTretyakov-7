@@ -4,7 +4,7 @@ import com.hellogwt.shared.domain.Greeting;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface GreetingMapper {
 
@@ -21,5 +21,5 @@ public interface GreetingMapper {
     void deleteGreeting(@Param("text") String text);
 
     @Select("SELECT * FROM greetings")
-    List<Greeting> getGreetings();
+    ArrayList<Greeting> getGreetings();
 }

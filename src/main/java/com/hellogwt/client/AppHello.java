@@ -7,13 +7,14 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
-import com.hellogwt.client.service.GreetingService;
-import com.hellogwt.client.service.GreetingServiceAsync;
+import com.hellogwt.client.gwt_rpc.GreetingService;
+import com.hellogwt.client.gwt_rpc.GreetingServiceAsync;
 import com.hellogwt.shared.domain.Greeting;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class HelloGWT implements EntryPoint {
+public class AppHello implements EntryPoint {
     private GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
     private HorizontalPanel authorPanel = new HorizontalPanel();
@@ -120,19 +121,22 @@ public class HelloGWT implements EntryPoint {
         });
     }
 
+    // #1 Заменим List на его конкретную реализацию - ArrayList:
+    // Конечно, из-за новой сигнатуры метода нужно не забыть изменить интерфейсы и классы, содержащие refreshGreetingTable()
     private void refreshGreetingsTable() {
-        greetingService.getGreetings(new AsyncCallback<List<Greeting>>() {
+        greetingService.getGreetings(new AsyncCallback<ArrayList<Greeting>>() {
             @Override
             public void onFailure(Throwable throwable) {
                 Window.alert("ERROR: Cannot load greetings!");
             }
 
             @Override
-            public void onSuccess(List<Greeting> greetings) {
+            public void onSuccess(ArrayList<Greeting> greetings) {
                 fillGreetingsTable(greetings);
             }
         });
     }
+
 
     private void fillGreetingsTable(List<Greeting> greetings) {
         greetingsFlexTable.removeAllRows();

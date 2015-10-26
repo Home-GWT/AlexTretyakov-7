@@ -1,10 +1,10 @@
-package com.hellogwt.client.service;
+package com.hellogwt.client.gwt_rpc;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.hellogwt.shared.domain.Greeting;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @RemoteServiceRelativePath("springGwtServices/greetingService")
 public interface GreetingService extends RemoteService {
@@ -17,5 +17,5 @@ public interface GreetingService extends RemoteService {
 
     void deleteGreeting(String text);
 
-    List<Greeting> getGreetings();
+    ArrayList<Greeting> getGreetings();
 }

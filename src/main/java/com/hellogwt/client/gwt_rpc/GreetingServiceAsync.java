@@ -1,9 +1,9 @@
-package com.hellogwt.client.service;
+package com.hellogwt.client.gwt_rpc;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.hellogwt.shared.domain.Greeting;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface GreetingServiceAsync {
 
@@ -15,5 +15,5 @@ public interface GreetingServiceAsync {
 
     void deleteGreeting(String text, AsyncCallback<Void> async);
 
-    void getGreetings(AsyncCallback<List<Greeting>> async);
+    void getGreetings(AsyncCallback<ArrayList<Greeting>> async);
 }
